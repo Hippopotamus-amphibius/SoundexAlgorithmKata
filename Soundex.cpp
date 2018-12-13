@@ -1,7 +1,7 @@
 //
 // Created by brettmcrae on 12/13/2018.
 //
-
+#include <unordered_map>
 #include "Soundex.h"
 
 /**
@@ -11,7 +11,7 @@
   */
 string Soundex::zeroPad(const string& word) const
 {
-    auto zerosNeeded = 4 - word.length();
+    auto zerosNeeded = MaxCodeLength - word.length();
     return word + string(zerosNeeded, '0');
 }
 
@@ -42,7 +42,42 @@ string Soundex::head(const string &word) const {
 string Soundex::encodeDigits(const string &word) const {
     if (word.length() > 1)
     {
-        return "1";
+        return "" + encodeDigit(word[1]);
     }
     return "";
+}
+
+/**
+ * @brief Encode single digit
+ * @return encoded digit
+ */
+char Soundex::encodeDigit(char letter) const {
+    switch(letter)
+    {
+        case 'b':
+        case 'f':
+        case 'p':
+        case 'v':
+            return '1';
+        case 'c':
+        case 'g':
+        case 'j':
+        case 'k':
+        case 'q':
+        case 's':
+        case 'x':
+        case 'z':
+            return '2';
+        case 'd':
+        case 't':
+            return '3';
+        case 'l':
+            return '4';
+        case 'm':
+        case 'n':
+            return '5';
+        case 'r':
+            return '6';
+        //default:throw invalid_argument("");
+    }
 }
