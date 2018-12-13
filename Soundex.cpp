@@ -22,10 +22,27 @@ string Soundex::zeroPad(const string& word) const
   */
 string Soundex::encode(const string& word) const
 {
-    auto encoded = word.substr(0, 1);
+    return zeroPad(head(word) + encodeDigits(word));
+}
+
+/**
+ * @brief Extract the first character of the string
+ * @param word - input string
+ * @return first letter of string
+ */
+string Soundex::head(const string &word) const {
+    return word.substr(0, 1);
+}
+
+/**
+ * @brief Encode the string into digits using
+ * @param word - input string
+ * @return - encoded string
+ */
+string Soundex::encodeDigits(const string &word) const {
     if (word.length() > 1)
     {
-        encoded += "1";
+        return "1";
     }
-    return zeroPad(encoded);
+    return "";
 }
