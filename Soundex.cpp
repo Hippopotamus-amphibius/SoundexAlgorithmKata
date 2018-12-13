@@ -11,7 +11,8 @@
   */
 string Soundex::zeroPad(const string& word) const
 {
-    return word + "000";
+    auto zerosNeeded = 4 - word.length();
+    return word + string(zerosNeeded, '0');
 }
 
 /**
@@ -21,5 +22,10 @@ string Soundex::zeroPad(const string& word) const
   */
 string Soundex::encode(const string& word) const
 {
-    return zeroPad(word);
+    auto encoded = word.substr(0, 1);
+    if (word.length() > 1)
+    {
+        encoded += "1";
+    }
+    return zeroPad(encoded);
 }

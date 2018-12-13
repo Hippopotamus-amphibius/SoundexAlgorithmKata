@@ -1,8 +1,8 @@
-#include "gmock/gmock.h"
+#include <gmock/gmock.h>
 #include "Soundex.h"
 using ::testing::Eq;
 
-// Create a class fixture
+// Create a test fixture
 class SoundexEncoding: public testing::Test
 {
 public:
@@ -25,5 +25,14 @@ TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits)
     auto result = soundex.encode("I");
     // Assert
     ASSERT_THAT(result, Eq("I000"));
+}
+
+TEST_F(SoundexEncoding, ReplaceConsonantsWithAppropriateDigits)
+{
+    // Arrange
+    // Act
+    auto result = soundex.encode("Ab");
+    // Assert
+    ASSERT_THAT(result, Eq("A100"));
 }
 
