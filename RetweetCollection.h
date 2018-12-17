@@ -5,11 +5,14 @@
 #ifndef FIRSTEXAMPLE_RETWEETCOLLECTION_H
 #define FIRSTEXAMPLE_RETWEETCOLLECTION_H
 
+#include "Tweet.h"
 
 class RetweetCollection {
+    unsigned int size_ = 0;
 public:
     bool isEmpty() const;
     unsigned int size() const;
+    void add(const Tweet& tweet);
 };
 
 

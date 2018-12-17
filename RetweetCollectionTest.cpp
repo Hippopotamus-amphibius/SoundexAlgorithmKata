@@ -3,6 +3,7 @@
 //
 #include <gmock/gmock.h>
 #include "RetweetCollection.h"
+
 using namespace testing;
 // Create a class fixture
 class RetweetCollectionTest: public testing::Test
@@ -13,12 +14,16 @@ public:
 
 TEST_F(RetweetCollectionTest, IsEmptyWhenCreated)
 {
-    RetweetCollection collection;
     ASSERT_TRUE(collection.isEmpty());
 }
 
 TEST_F(RetweetCollectionTest, HasSizeZeroWhenCreated)
 {
-    RetweetCollection collection;
     ASSERT_THAT(collection.size(), Eq(0u));
+}
+
+TEST_F(RetweetCollectionTest, IsNotEmptyAfterTweetAdded)
+{
+    collection.add(Tweet());
+    ASSERT_FALSE(collection.isEmpty());
 }
