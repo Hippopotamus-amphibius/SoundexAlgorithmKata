@@ -55,3 +55,10 @@ TEST_F(SoundexEncoding, LimitLengthToFourCharacters)
     // Act & Assert
     ASSERT_THAT(soundex.encode("Dcdlb").length(), Eq(4u));
 }
+
+TEST_F(SoundexEncoding, CombineDuplicateEncodings)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("Abfxgdt"), Eq("A123"));
+}

@@ -52,9 +52,12 @@ string Soundex::tail(const string &word) const {
 string Soundex::encodeDigits(const string &word) const
 {
     string encoding = "";
-    for(size_t i = 0; i<word.length() && i<MaxCodeLength-1; i++)
+    for (auto letter : word)
     {
-        encoding  += encodeDigit(word[i]);
+        if (isComplete(encoding)) break;
+        if (encodeDigit(letter) != lastDigit(encoding)) {
+            encoding += encodeDigit(letter);
+        }
     }
     return encoding;
 }
@@ -82,6 +85,15 @@ string Soundex::encodeDigit(char letter) const
         default:
             return "";
     }
+}
+
+bool Soundex::isComplete(const string& encoding) const {
+    return encoding.length() >= MaxCodeLength - 1;
+}
+
+string Soundex::lastDigit(const string& encoding) const {
+    if (encoding.empty()) return "";
+    return std::string(1, encoding.back());
 }
 
 
