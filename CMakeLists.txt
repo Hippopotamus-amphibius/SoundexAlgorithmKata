@@ -1,4 +1,4 @@
-project(SoundexAlgorithmKata)
+project(FirstExample)
 cmake_minimum_required(VERSION 2.6)
 
 # This assumes you have library on the same folder as your project

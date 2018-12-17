@@ -1,4 +1,5 @@
 # SoundexAlgorithmKata
-TDD for the Soundex algorithm (https://en.wikipedia.org/wiki/Soundex#American_Soundex)
+TDD for the Soundex Algorithm using Google Test(https://github.com/google/googletest). 
 
-Using Google Test and Google Mock (https://github.com/google/googlemock)
+https://en.wikipedia.org/wiki/Soundex 
+
