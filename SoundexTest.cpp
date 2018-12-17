@@ -69,3 +69,17 @@ TEST_F(SoundexEncoding, UpperCaseFirstLetter)
     // Act & Assert
     ASSERT_THAT(soundex.encode("abcd"), StartsWith("A"));
 }
+
+TEST_F(SoundexEncoding, EmptyReturnsEmpty)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode(""), Eq(""));
+}
+
+TEST_F(SoundexEncoding, IgnoreCaseWhenEncodingConsonants)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("BCDL"), soundex.encode("bcdl"));
+}

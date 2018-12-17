@@ -21,6 +21,7 @@ string Soundex::zeroPad(const string& word)const
  */
 string Soundex::encode(const string& word) const
 {
+    if (word.length() == 0) return "";
     auto encodedDigits = encodeDigits(tail(word));
     char upperHead = (char)toupper(word[0]);
     return zeroPad(upperHead + encodedDigits);
@@ -59,7 +60,8 @@ string Soundex::encodeDigits(const string &word) const
  */
 string Soundex::encodeDigit(char letter) const
 {
-    switch(letter)
+    auto lower = tolower(letter);
+    switch(lower)
     {
         case 'b':  case 'f':  case 'p':  case 'v':
             return "1";
