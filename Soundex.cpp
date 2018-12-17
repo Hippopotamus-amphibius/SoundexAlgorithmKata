@@ -52,7 +52,10 @@ string Soundex::tail(const string &word) const {
 string Soundex::encodeDigits(const string &word) const
 {
     string encoding = "";
-    for (auto letter : word) encoding  += encodeDigit(letter);
+    for(size_t i = 0; i<word.length() && i<MaxCodeLength-1; i++)
+    {
+        encoding  += encodeDigit(word[i]);
+    }
     return encoding;
 }
 
