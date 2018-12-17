@@ -22,17 +22,8 @@ string Soundex::zeroPad(const string& word)const
 string Soundex::encode(const string& word) const
 {
     auto encodedDigits = encodeDigits(tail(word));
-    return zeroPad(head(word) + encodedDigits);
-}
-
-/**
- * @brief Extract the first char of the string
- * @param word - input string
- * @return - first letter of string "head"
- */
-string Soundex::head(const string &word) const
-{
-    return word.substr(0, 1);
+    char upperHead = (char)toupper(word[0]);
+    return zeroPad(upperHead + encodedDigits);
 }
 
 /**

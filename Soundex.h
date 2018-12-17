@@ -16,7 +16,6 @@ class Soundex
 {
 private:
     string zeroPad(const string& word) const;
-    string head(const string& word) const;
     string tail(const string& word) const;
     string encodeDigits(const string& word)const;
     string encodeDigit(char letter)const;
