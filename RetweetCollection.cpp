@@ -12,6 +12,6 @@ unsigned int RetweetCollection::size() const {
     return size_;
 }
 
-void RetweetCollection::add(Tweet tweet) {
+void RetweetCollection::add(const Tweet& tweet) {
     size_++;
 }

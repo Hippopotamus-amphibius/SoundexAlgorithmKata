@@ -27,3 +27,16 @@ TEST_F(RetweetCollectionTest, IsNotEmptyAfterTweetAdded)
     collection.add(Tweet());
     ASSERT_FALSE(collection.isEmpty());
 }
+
+TEST_F(RetweetCollectionTest, IsEmptyWhenSizeIsZero)
+{
+    ASSERT_THAT(collection.size(), Eq(0u));
+    ASSERT_TRUE(collection.isEmpty());
+}
+
+TEST_F(RetweetCollectionTest, IsNotEmptyWhenSizeIsZero)
+{
+    collection.add(Tweet());
+    ASSERT_THAT(collection.size(), Gt(0u));
+    ASSERT_FALSE(collection.isEmpty());
+}
