@@ -41,3 +41,10 @@ TEST_F(SoundexEncoding, IgnoreNonAlphabetics)
     // Act & Assert
     ASSERT_THAT(soundex.encode("A#"), Eq("A000"));
 }
+
+TEST_F(SoundexEncoding, ReplaceMultipleConsonantsWithDigits)
+{
+    // Arrange @ class fixture
+    // Act & Assert
+    ASSERT_THAT(soundex.encode("Acdl"), Eq("A234"));
+}

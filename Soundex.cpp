@@ -21,7 +21,8 @@ string Soundex::zeroPad(const string& word)const
  */
 string Soundex::encode(const string& word) const
 {
-    return zeroPad(head(word) + encodeDigits(word));
+    auto encodedDigits = encodeDigits(tail(word));
+    return zeroPad(head(word) + encodedDigits);
 }
 
 /**
@@ -35,16 +36,24 @@ string Soundex::head(const string &word) const
 }
 
 /**
+ * @brief Return all but the first character
+ * @param word - input string
+ * @return string from 1:END
+ */
+string Soundex::tail(const string &word) const {
+    return word.substr(1);
+}
+
+/**
  * @brief Encode the string into digits using Soundex Algorithm
  * @param word - input string
  * @return - encoded string
  */
 string Soundex::encodeDigits(const string &word) const
 {
-    if(word.length() > 1)
-        return encodeDigit(word[1]);
-
-    return "";
+    string encoding = "";
+    for (auto letter : word) encoding  += encodeDigit(letter);
+    return encoding;
 }
 
 /**
@@ -71,4 +80,5 @@ string Soundex::encodeDigit(char letter) const
             return "";
     }
 }
+
 
