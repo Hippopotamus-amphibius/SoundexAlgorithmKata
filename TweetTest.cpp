@@ -21,6 +21,13 @@ TEST(ATweet, IsEqualWhenSameMessageAndUser)
     ASSERT_THAT(tweet, Eq(tweet2));
 }
 
+TEST(ATweet, CanCopyConstructed)
+{
+    Tweet a("msg", "User");
+    Tweet b(a);
+    ASSERT_THAT(a, Eq(b));
+}
+
 TEST(ATweet, NotEqualWhenDifferentMessage)
 {
     Tweet tweet("msg", "User");
