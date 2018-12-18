@@ -4,16 +4,15 @@
 #include "RetweetCollection.h"
 
 bool RetweetCollection::isEmpty() const {
-    return size_ == 0;
+    return tweets.size() == 0;
 }
 
 unsigned int RetweetCollection::size() const {
-    return size_;
+    return tweets.size();
 }
 
 void RetweetCollection::add(const Tweet& tweet) {
     tweets.insert(tweet);
-    size_++;
 }
 
 RetweetCollection::RetweetCollection() {
