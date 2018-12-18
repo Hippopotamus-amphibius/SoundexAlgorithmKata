@@ -6,39 +6,48 @@
 
 using namespace testing;
 // Create a class fixture
-class RetweetCollectionTest: public testing::Test
+class ARetweetCollection: public testing::Test
 {
 public:
     RetweetCollection collection;
 };
 
-TEST_F(RetweetCollectionTest, IsEmptyWhenCreated)
+TEST_F(ARetweetCollection, IsEmptyWhenCreated)
 {
     ASSERT_TRUE(collection.isEmpty());
 }
 
-TEST_F(RetweetCollectionTest, HasSizeZeroWhenCreated)
+TEST_F(ARetweetCollection, HasSizeZeroWhenCreated)
 {
     ASSERT_THAT(collection.size(), Eq(0u));
 }
 
-TEST_F(RetweetCollectionTest, IsNotEmptyAfterTweetAdded)
+TEST_F(ARetweetCollection, IsNotEmptyAfterTweetAdded)
 {
     collection.add(Tweet());
     ASSERT_FALSE(collection.isEmpty());
 }
 
-TEST_F(RetweetCollectionTest, IsEmptyWhenSizeIsZero)
+TEST_F(ARetweetCollection, IsEmptyWhenSizeIsZero)
 {
     ASSERT_THAT(collection.size(), Eq(0u));
     ASSERT_TRUE(collection.isEmpty());
 }
 
-TEST_F(RetweetCollectionTest, IsNotEmptyWhenSizeIsZero)
+TEST_F(ARetweetCollection, IsNotEmptyWhenSizeIsZero)
 {
     collection.add(Tweet());
     ASSERT_THAT(collection.size(), Gt(0u));
     ASSERT_FALSE(collection.isEmpty());
+}
+
+TEST_F(ARetweetCollection, IgnoreDuplicateTweetAdded)
+{
+    Tweet tweet("msg", "@user");
+    Tweet duplicate(tweet);
+    collection.add(tweet);
+    collection.add(duplicate);
+    ASSERT_THAT(collection.size(), Eq(1u));
 }
 
 class ARetweetCollectionWithOneTweet : public Test

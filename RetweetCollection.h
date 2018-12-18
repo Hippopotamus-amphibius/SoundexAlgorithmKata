@@ -6,10 +6,13 @@
 #define FIRSTEXAMPLE_RETWEETCOLLECTION_H
 
 #include "Tweet.h"
+#include <set>
 
 class RetweetCollection {
     unsigned int size_ = 0;
+    set<Tweet> tweets;
 public:
+    RetweetCollection();
     bool isEmpty() const;
     unsigned int size() const;
     void add(const Tweet& tweet);
