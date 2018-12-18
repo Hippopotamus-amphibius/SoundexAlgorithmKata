@@ -31,6 +31,20 @@ TEST(ATweet, NotEqualWhenDifferentMessage)
 TEST(ATweet, NotEqualWhenDifferentUser)
 {
     Tweet tweet("msg", "User");
-    Tweet tweet2("msg", "User2");
+    Tweet tweet2("msg", "User2 ");
     ASSERT_THAT(tweet, Ne(tweet2));
+}
+
+TEST(ATweet, IsLessThanWhenUserLessThan)
+{
+    Tweet tweet("msg", "User1");
+    Tweet tweet2("msg", "User2 ");
+    ASSERT_THAT(tweet, Lt(tweet2));
+}
+
+TEST(ATweet, IsLessThanWhenMessageLessThan)
+{
+    Tweet tweet("msg1", "User");
+    Tweet tweet2("msg2", "User ");
+    ASSERT_THAT(tweet, Lt(tweet2));
 }
