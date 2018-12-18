@@ -5,12 +5,6 @@
 #include "Tweet.h"
 const std::string Tweet::NULL_USER("@null");
 
-struct InvalidUserException: public std::invalid_argument
-{
-public:
-    InvalidUserException(const string& user) : invalid_argument(user) {}
-};
-
 Tweet::Tweet(const string &msg, const string &user)
 {
     if (!isValidUser(user)) throw InvalidUserException(user);

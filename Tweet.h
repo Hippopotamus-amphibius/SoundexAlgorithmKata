@@ -22,5 +22,10 @@ public:
     bool operator!=(const Tweet &rhs) const;
 };
 
+struct InvalidUserException: public std::invalid_argument
+{
+public:
+    InvalidUserException(const string& user) : invalid_argument(user) {}
+};
 
 #endif //FIRSTEXAMPLE_TWEET_H

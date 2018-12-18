@@ -59,5 +59,5 @@ TEST(ATweet, IsLessThanWhenMessageLessThan)
 TEST(ATweet, RequireUserToStartWithAtSign)
 {
     string invalidUser("notStartingWith@");
-    ASSERT_ANY_THROW(Tweet tweet("msg", invalidUser));
+    ASSERT_THROW(Tweet tweet("msg", invalidUser), InvalidUserException);
 }
