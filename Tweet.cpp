@@ -5,7 +5,15 @@
 #include "Tweet.h"
 const std::string Tweet::NULL_USER("@null");
 
-Tweet::Tweet(const string &msg, const string &user) {
+struct InvalidUserException: public std::invalid_argument
+{
+public:
+    InvalidUserException(const string& user) : invalid_argument(user) {}
+};
+
+Tweet::Tweet(const string &msg, const string &user)
+{
+    if (!isValidUser(user)) throw InvalidUserException(user);
     message_ = msg;
     user_ = user;
 }
@@ -27,4 +35,9 @@ bool Tweet::operator==(const Tweet &rhs) const {
 
 bool Tweet::operator!=(const Tweet &rhs) const {
     return !(rhs == *this);
+}
+
+bool Tweet::isValidUser(const string &user)
+{
+    return user.length() > 2 && user[0] == '@';
 }

@@ -12,14 +12,13 @@ class Tweet
 {
     string message_;
     string user_;
+    bool isValidUser(const string &basic_string);
 public:
     const string &getUser() const;
     static const string NULL_USER;
     Tweet(const string& msg = "", const string& user = Tweet::NULL_USER);
     bool operator<(const Tweet& rhs) const;
-
     bool operator==(const Tweet &rhs) const;
-
     bool operator!=(const Tweet &rhs) const;
 };
 
